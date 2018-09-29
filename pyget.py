@@ -49,13 +49,13 @@ import boto
 def init_s3(key, secret, bucket_name):
     bucket_tmp = bucket_name.strip('/').split('/')
     bucket_string = bucket_tmp[0]
-    print 'Connecting to S3...'
+    print ('Connecting to S3...')
     s3 = boto.connect_s3(key, secret)
     try:
         bucket = s3.get_bucket(bucket_string)
-        print 'Connected to S3!'
+        print ('Connected to S3!')
     except boto.exception.S3ResponseError as e:
-        print 'Bucket not found so I\'m creating one for you'
+        print ('Bucket not found so I\'m creating one for you')
         bucket = s3.create_bucket(bucket_string)
     # s3 dir
     if len(bucket_tmp) > 1:
@@ -125,7 +125,7 @@ def index():
 @app.route('/Search()/$count')
 @app.route('/Packages()')
 def search():
-    print request.args
+    print (request.args)
     # TODO: implement routes
     return "Nothing to see here, yet!", 501
 
